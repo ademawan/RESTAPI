@@ -1,0 +1,7 @@
+Ini struktur golang yang sudah berbentuk microservice
+
+main.go = berfungsi untuk memanggil file routers
+routers = berfungsi untuk memanggil file yang ada di controllers
+controllers = berfungsi untuk codingan yang berisi func request, logic, dan memanggil data yang ada di models
+models = berfungsi untuk codingan yang berisi func query dan memanggil tipe data struct dari entities
+entities = berfungsi untuk condingan yang berisikan tipe data struct
