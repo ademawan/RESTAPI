@@ -4,6 +4,8 @@ import (
 	"RESTAPI/configs"
 	"database/sql"
 	"fmt"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func InitDB(config *configs.AppConfig) (*sql.DB, error) {
@@ -27,7 +29,13 @@ func InitDB(config *configs.AppConfig) (*sql.DB, error) {
 func InitMigrate(db *sql.DB) {
 	// db.Migrator().DropTable(&entities.User{})
 	// db.AutoMigrate(&entities.User{})
-
+	rows, err := db.Query("CREATE TABLE IF NOT EXISTS testa (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,firstname VARCHAR(30) NOT NULL,lastname VARCHAR(30) NOT NULL,email VARCHAR(50),reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP) ")
+	defer db.Close()
+	if err != nil {
+		return
+	}
+	fmt.Println("sukses")
+	rows.Close()
 	// // var userUid []string
 
 	// // layoutFormat := "2006-01-02T15:04"
